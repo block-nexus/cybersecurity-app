@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Mastery - Learn to Stay Safe Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🛡️ Cybersecurity Mastery</h1>
+            <p class="subtitle">Learn cybersecurity from introduction to master level</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#levels" class="nav-link">Levels</a></li>
+                <li><a href="#lessons" class="nav-link">Lessons</a></li>
+                <li><a href="#quiz" class="nav-link">Practice Quiz</a></li>
+                <li><a href="#tips" class="nav-link">Quick Tips</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="welcome-card">
+                <h2>Welcome to Cybersecurity Mastery!</h2>
+                <p>Master cybersecurity from introduction to master level. Progress through six comprehensive levels, each building on the previous one with increasing depth and technical detail.</p>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="progress-percent">0%</div>
+                        <div class="stat-label">Overall Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="lessons-completed">0</div>
+                        <div class="stat-label">Lessons Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="quiz-score">-</div>
+                        <div class="stat-label">Quiz Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="current-level">Introduction</div>
+                        <div class="stat-label">Current Level</div>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Progressive Learning</h3>
+                        <p>Six levels from introduction to master, each more advanced</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✅</div>
+                        <h3>Level-Specific Quizzes</h3>
+                        <p>Test your knowledge at each level</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Practical & Technical</h3>
+                        <p>Real-world scenarios and deep technical knowledge</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Track Progress</h3>
+                        <p>Monitor your advancement through all levels</p>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="showSection('levels')">Choose Your Level →</button>
+            </div>
+        </section>
+
+        <!-- Levels Section -->
+        <section id="levels" class="section">
+            <h2>Choose Your Learning Level</h2>
+            <p class="section-intro">Select a level to begin. Each level builds upon the previous one with increasing depth and technical complexity.</p>
+            
+            <div class="levels-grid" id="levels-container">
+                <!-- Levels will be dynamically generated -->
+            </div>
+        </section>
+
+        <!-- Lessons Section -->
+        <section id="lessons" class="section">
+            <div class="level-header">
+                <h2 id="lessons-title">Cybersecurity Lessons</h2>
+                <div class="level-selector">
+                    <label for="level-select">Level: </label>
+                    <select id="level-select" onchange="changeLevel(this.value)">
+                        <option value="introduction">Introduction</option>
+                        <option value="fundamentals">Fundamentals</option>
+                        <option value="practitioner">Practitioner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="expert">Expert</option>
+                        <option value="master">Master</option>
+                    </select>
+                </div>
+            </div>
+            <p class="section-intro" id="lessons-intro">Click on any lesson to start learning. Complete all lessons to master this level!</p>
+            
+            <div class="lessons-grid" id="lessons-container">
+                <!-- Lessons will be dynamically generated -->
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="level-header">
+                <h2>Practice Quiz</h2>
+                <div class="level-selector">
+                    <label for="quiz-level-select">Level: </label>
+                    <select id="quiz-level-select" onchange="changeQuizLevel(this.value)">
+                        <option value="introduction">Introduction</option>
+                        <option value="fundamentals">Fundamentals</option>
+                        <option value="practitioner">Practitioner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="expert">Expert</option>
+                        <option value="master">Master</option>
+                    </select>
+                </div>
+            </div>
+            <p class="section-intro" id="quiz-intro">Test your knowledge with these cybersecurity questions for your selected level!</p>
+            
+            <div id="quiz-container">
+                <div id="quiz-start">
+                    <p>Ready to test what you've learned? This quiz contains questions from all the lessons in your selected level.</p>
+                    <button class="btn-primary" onclick="startQuiz()">Start Quiz</button>
+                </div>
+                <div id="quiz-content" style="display: none;">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quiz-progress-bar"></div>
+                        </div>
+                        <p>Question <span id="current-question">1</span> of <span id="total-questions">10</span></p>
+                    </div>
+                    <div id="question-container"></div>
+                    <div id="quiz-results" style="display: none;">
+                        <h3>Quiz Complete!</h3>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="final-score">0</span>%
+                            </div>
+                        </div>
+                        <p id="score-message"></p>
+                        <button class="btn-primary" onclick="resetQuiz()">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section id="tips" class="section">
+            <h2>Quick Cybersecurity Tips</h2>
+            <p class="section-intro">Essential tips to keep yourself safe online</p>
+            
+            <div class="tips-grid" id="tips-container">
+                <!-- Tips will be dynamically generated -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Cybersecurity Mastery. Stay safe online! 🛡️</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+

@@ -273,7 +273,7 @@ main {
 /* Stats */
 .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
 }
@@ -352,6 +352,21 @@ main {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+    min-height: 3rem;
+    display: block;
+    text-align: center;
+}
+
+/* Special handling for current level to accommodate longer names */
+#current-level {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    min-height: 2.4rem;
+    white-space: normal;
+    overflow: visible;
 }
 
 .stat-label {
@@ -1147,6 +1162,14 @@ footer {
 
     .stats {
         grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    #current-level {
+        font-size: 1.75rem;
     }
 
     .feature-grid,
